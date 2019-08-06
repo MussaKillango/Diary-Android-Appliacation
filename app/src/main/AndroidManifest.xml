@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.Diary2">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        <activity android:name="com.example.Diary2.search.Search" />
+        <activity android:name="com.example.Diary2.login.Login" />
+        <activity android:name="com.example.Diary2.login.Register" />
+        <activity android:name="com.example.Diary2.notes.Notes" />
+        <activity
+            android:name="com.example.Diary2.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.Diary2.notes.EditNoteActivity"
+            android:parentActivityName="com.example.Diary2.notes.Notes" />
+    </application>
+
+</manifest>

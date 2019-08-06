@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Diary</string>
+    <string name="action_search">Search</string>
+    <string name="whats_in_your_mind">Write anything</string>
+    <string name="share_note">Share Note</string>
+    <string name="delete_notes">Delete Notes</string>
+    <string name="no_notes">Empty</string>
+    <string name="settings">Settings</string>
+</resources>
