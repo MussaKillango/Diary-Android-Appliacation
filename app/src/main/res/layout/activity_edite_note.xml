@@ -23,13 +23,11 @@
         android:layout_height="match_parent"
         android:layout_gravity="top"
         android:ems="10"
-        android:hint="Write anything..."
+        android:hint="@string/place_holder"
         android:gravity="top"
         android:inputType="textMultiLine"
         android:paddingEnd="12dp"
         android:paddingStart="12dp"
         android:paddingTop="4dp"
-        tools:text="@tools:sample/lorem/random"
-
-        />
+        android:importantForAutofill="no" />
 </RelativeLayout>
