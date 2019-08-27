@@ -38,12 +38,12 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteHolder> 
     }
 
     @Override
-    public void onBindViewHolder(NoteHolder holder, int position) {
+    public void onBindViewHolder(@NonNull NoteHolder holder, int position) {
         final Note note = getNote(position);
         if (note != null) {
             holder.noteText.setText(note.getNoteText());
 
-            holder.noteDate.setText(NoteUtils.dateFromLong(note.getNoteDate()));
+            holder.noteDate.setText(note.getNoteText());//(NoteUtils.dateFromLong(note.getNoteDate()));
             // init note click event
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -95,7 +95,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteHolder> 
         TextView noteText, noteDate;
         CheckBox checkBox;
 
-        public NoteHolder(View itemView) {
+        private NoteHolder(View itemView) {
             super(itemView);
             noteDate = itemView.findViewById(R.id.note_date);
             noteText = itemView.findViewById(R.id.note_text);

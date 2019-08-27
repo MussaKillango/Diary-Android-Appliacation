@@ -1,6 +1,7 @@
 package com.example.Diary2.notes;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 
+import com.example.Diary2.MainActivity;
 import com.example.Diary2.R;
 import com.example.Diary2.db.NotesDB;
 import com.example.Diary2.db.NotesDao;
@@ -63,7 +65,7 @@ public class EditNoteActivity extends AppCompatActivity {
         String text = inputNote.getText().toString();
         if (!text.isEmpty()) {
             long date = new Date().getTime(); // get  system time
-            // if  exist update els crete new
+            // if  exist update else create new
             if (temp == null) {
                 temp = new Note(text, date);
                 dao.insertNote(temp); // create new note and inserted to database

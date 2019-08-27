@@ -42,7 +42,6 @@ import java.util.List;
 import static com.example.Diary2.notes.EditNoteActivity.NOTE_EXTRA_Key;
 
 public class Notes extends AppCompatActivity implements NoteEventListener, Drawer.OnDrawerItemClickListener {
-    private static final String TAG = "Notes";
     private RecyclerView recyclerView;
     public ArrayList<Note> notes;
     public NotesAdapter adapter;
@@ -75,7 +74,7 @@ public class Notes extends AppCompatActivity implements NoteEventListener, Drawe
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // fab Button
-        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,7 +103,7 @@ public class Notes extends AppCompatActivity implements NoteEventListener, Drawe
 
     private void setupNavigation(Bundle savedInstanceState, Toolbar toolbar) {
 
-        // Navigation menu items (Vya kuvitoa)
+        // Navigation menu items
         List<IDrawerItem> iDrawerItems = new ArrayList<>();
         iDrawerItems.add(new PrimaryDrawerItem()
                 .withName("Home").withIcon(R.drawable.ic_home_black_24dp)
@@ -152,6 +151,7 @@ public class Notes extends AppCompatActivity implements NoteEventListener, Drawe
 
         iDrawerItems.add(new PrimaryDrawerItem()
                 .withName("Change Password")
+                .withIcon(R.drawable.ic_lock)
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {

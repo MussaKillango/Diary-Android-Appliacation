@@ -15,15 +15,14 @@ import com.example.Diary2.login.Register;
 
 public class MainActivity extends AppCompatActivity {
 
-    CalendarView calendarView;
-
     @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        calendarView = findViewById(R.id.calendarView);
+        CalendarView calendarView = findViewById(R.id.calendarView);
+        calendarView.setFirstDayOfWeek(2);
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -36,10 +35,12 @@ public class MainActivity extends AppCompatActivity {
                 else{
                     startActivity(new Intent(getApplicationContext(),Register.class));
                 }
+
             }
 
         });
 
     }
+
 }
 
