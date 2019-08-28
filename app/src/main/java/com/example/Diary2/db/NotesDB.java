@@ -9,8 +9,6 @@ import com.example.Diary2.model.Note;
 
 @Database(entities = Note.class, version = 1)
 public abstract class NotesDB extends RoomDatabase {
-    public abstract NotesDao notesDao();
-
     public static final String DATABSE_NAME = "notesDb";
     private static NotesDB instance;
 
@@ -21,4 +19,6 @@ public abstract class NotesDB extends RoomDatabase {
                     .build();
         return instance;
     }
+
+    public abstract NotesDao notesDao();
 }

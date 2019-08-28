@@ -42,18 +42,40 @@ import java.util.List;
 import static com.example.Diary2.notes.EditNoteActivity.NOTE_EXTRA_Key;
 
 public class Notes extends AppCompatActivity implements NoteEventListener, Drawer.OnDrawerItemClickListener {
-    private RecyclerView recyclerView;
+    public static final String THEME_Key = "app_theme";
+    public static final String APP_PREFERENCES="notepad_settings";
     public ArrayList<Note> notes;
     public NotesAdapter adapter;
+    private RecyclerView recyclerView;
     private NotesDao dao;
     private MainActionModeCallback actionModeCallback;
     private int chackedCount = 0;
     private FloatingActionButton fab;
     private SharedPreferences search;
-    public static final String THEME_Key = "app_theme";
-    public static final String APP_PREFERENCES="notepad_settings";
     private int theme;
+    // swipe to right or to left te delete
+    private ItemTouchHelper swipeToDeleteHelper = new ItemTouchHelper(
+            new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+                @Override
+                public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                    return false;
+                }
 
+                @Override
+                public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                    // delete note when swipe
+
+                    if (notes != null) {
+                        // get swiped note
+                        Note swipedNote = notes.get(viewHolder.getAdapterPosition());
+                        if (swipedNote != null) {
+                            swipeToDelete(swipedNote, viewHolder);
+
+                        }
+
+                    }
+                }
+            });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,8 +107,6 @@ public class Notes extends AppCompatActivity implements NoteEventListener, Drawe
 
         dao = NotesDB.getInstance(this).notesDao();
     }
-
-
 
     public void filter (String text) {
         ArrayList<Note> filterList = new ArrayList<>();
@@ -196,11 +216,11 @@ public class Notes extends AppCompatActivity implements NoteEventListener, Drawe
             findViewById(R.id.empty_notes_view).setVisibility(View.GONE);
         }
     }
+
     private void onAddNewNote() {
         startActivity(new Intent(this, EditNoteActivity.class));
 
     }
-
 
     @Override
     protected void onResume() {
@@ -275,7 +295,6 @@ public class Notes extends AppCompatActivity implements NoteEventListener, Drawe
         actionModeCallback.setCount(chackedCount + "/" + notes.size());
     }
 
-
     private void onShareNote() {
         // Sharing one note
 
@@ -316,30 +335,6 @@ public class Notes extends AppCompatActivity implements NoteEventListener, Drawe
         adapter.setListener(this); // set back the old listener
         fab.setVisibility(View.VISIBLE);
     }
-
-    // swipe to right or to left te delete
-    private ItemTouchHelper swipeToDeleteHelper = new ItemTouchHelper(
-            new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
-                @Override
-                public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
-                    return false;
-                }
-
-                @Override
-                public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-                    // delete note when swipe
-
-                    if (notes != null) {
-                        // get swiped note
-                        Note swipedNote = notes.get(viewHolder.getAdapterPosition());
-                        if (swipedNote != null) {
-                            swipeToDelete(swipedNote, viewHolder);
-
-                        }
-
-                    }
-                }
-            });
 
     private void swipeToDelete(final Note swipedNote, final RecyclerView.ViewHolder viewHolder) {
         new AlertDialog.Builder(Notes.this)

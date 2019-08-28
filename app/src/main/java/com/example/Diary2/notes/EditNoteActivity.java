@@ -19,10 +19,10 @@ import com.example.Diary2.model.Note;
 import java.util.Date;
 
 public class EditNoteActivity extends AppCompatActivity {
+    public static final String NOTE_EXTRA_Key = "note_id";
     private EditText inputNote;
     private NotesDao dao;
     private Note temp;
-    public static final String NOTE_EXTRA_Key = "note_id";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

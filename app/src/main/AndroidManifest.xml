@@ -11,7 +11,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name="com.example.Diary2.search.Search" />
         <activity android:name="com.example.Diary2.login.Login" />
         <activity android:name="com.example.Diary2.login.Register" />
         <activity android:name="com.example.Diary2.notes.Notes" />

@@ -6,6 +6,21 @@
     tools:context="com.example.Diary2.notes.EditNoteActivity">
 
 
+    <EditText
+        android:id="@+id/input_note"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/edit_note_activity_toolbar"
+        android:layout_gravity="top"
+        android:ems="10"
+        android:gravity="top"
+        android:hint="@string/place_holder"
+        android:importantForAutofill="no"
+        android:inputType="textMultiLine"
+        android:paddingStart="12dp"
+        android:paddingTop="4dp"
+        android:paddingEnd="12dp" />
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/edit_note_activity_toolbar"
         android:layout_width="match_parent"
@@ -15,19 +30,4 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
-
-    <EditText
-        android:layout_below="@id/edit_note_activity_toolbar"
-        android:id="@+id/input_note"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="top"
-        android:ems="10"
-        android:hint="@string/place_holder"
-        android:gravity="top"
-        android:inputType="textMultiLine"
-        android:paddingEnd="12dp"
-        android:paddingStart="12dp"
-        android:paddingTop="4dp"
-        android:importantForAutofill="no" />
 </RelativeLayout>

@@ -90,20 +90,6 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteHolder> 
         return checkedNotes;
     }
 
-
-    class NoteHolder extends RecyclerView.ViewHolder {
-        TextView noteText, noteDate;
-        CheckBox checkBox;
-
-        private NoteHolder(View itemView) {
-            super(itemView);
-            noteDate = itemView.findViewById(R.id.note_date);
-            noteText = itemView.findViewById(R.id.note_text);
-            checkBox = itemView.findViewById(R.id.checkBox);
-        }
-    }
-
-
     public void setListener(NoteEventListener listener) {
         this.listener = listener;
     }
@@ -115,5 +101,17 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteHolder> 
                 note.setChecked(false);
             }
         notifyDataSetChanged();
+    }
+
+    class NoteHolder extends RecyclerView.ViewHolder {
+        TextView noteText, noteDate;
+        CheckBox checkBox;
+
+        private NoteHolder(View itemView) {
+            super(itemView);
+            noteDate = itemView.findViewById(R.id.note_date);
+            noteText = itemView.findViewById(R.id.note_text);
+            checkBox = itemView.findViewById(R.id.checkBox);
+        }
     }
 }

@@ -27,8 +27,8 @@ public class Login extends AppCompatActivity {
 
         db = new DatabaseHelper(this);
 
-        password = (EditText) findViewById(R.id.editpassword);
-        login = (Button) findViewById(R.id.btnlogin);
+        password = findViewById(R.id.editpassword);
+        login = findViewById(R.id.btnlogin);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override

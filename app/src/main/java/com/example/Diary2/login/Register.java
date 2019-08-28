@@ -27,9 +27,9 @@ public class Register extends AppCompatActivity {
         getIntent();
 
         db = new DatabaseHelper(this);
-        password = (EditText) findViewById(R.id.txtpasword);
-        confirm = (EditText) findViewById(R.id.txtconfirm);
-        register = (Button) findViewById(R.id.btnregister);
+        password = findViewById(R.id.txtpasword);
+        confirm = findViewById(R.id.txtconfirm);
+        register = findViewById(R.id.btnregister);
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
